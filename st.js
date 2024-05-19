@@ -193,60 +193,60 @@ let mapInitializeds = false;
  
 
 
-  const busInfo = document.querySelector('.text');
-  const handle = document.querySelector('.handle');
+  // const busInfo = document.querySelector('.text');
+  // const handle = document.querySelector('.handle');
   
-  let isDragging = false;
-  let startY, startHeight;
+  // let isDragging = false;
+  // let startY, startHeight;
   
-  const onMouseMove = (e) => {
-    if (!isDragging) return;
-    const dy = e.clientY - startY;
-    const newHeight = startHeight - dy;
-    busInfo.style.height = `${newHeight}px`;
-  };
+  // const onMouseMove = (e) => {
+  //   if (!isDragging) return;
+  //   const dy = e.clientY - startY;
+  //   const newHeight = startHeight - dy;
+  //   busInfo.style.height = `${newHeight}px`;
+  // };
   
-  const onMouseUp = () => {
-    isDragging = false;
-    window.removeEventListener('mousemove', onMouseMove);
-    window.removeEventListener('mouseup', onMouseUp);
-  };
+  // const onMouseUp = () => {
+  //   isDragging = false;
+  //   window.removeEventListener('mousemove', onMouseMove);
+  //   window.removeEventListener('mouseup', onMouseUp);
+  // };
   
-  const onMouseDown = (e) => {
-    isDragging = true;
-    startY = e.clientY;
-    startHeight = busInfo.getBoundingClientRect().height;
-    window.addEventListener('mousemove', onMouseMove);
-    window.addEventListener('mouseup', onMouseUp);
-  };
+  // const onMouseDown = (e) => {
+  //   isDragging = true;
+  //   startY = e.clientY;
+  //   startHeight = busInfo.getBoundingClientRect().height;
+  //   window.addEventListener('mousemove', onMouseMove);
+  //   window.addEventListener('mouseup', onMouseUp);
+  // };
   
-  handle.addEventListener('mousedown', onMouseDown);
+  // handle.addEventListener('mousedown', onMouseDown);
 
   
   
-  // For touch devices
-  const onTouchMove = (e) => {
-    if (!isDragging) return;
-    const dy = e.touches[0].clientY - startY;
-    const newHeight = startHeight - dy;
-    busInfo.style.height = `${newHeight}px`;
-  };
+  // // For touch devices
+  // const onTouchMove = (e) => {
+  //   if (!isDragging) return;
+  //   const dy = e.touches[0].clientY - startY;
+  //   const newHeight = startHeight - dy;
+  //   busInfo.style.height = `${newHeight}px`;
+  // };
   
-  const onTouchEnd = () => {
-    isDragging = false;
-    window.removeEventListener('touchmove', onTouchMove);
-    window.removeEventListener('touchend', onTouchEnd);
-  };
+  // const onTouchEnd = () => {
+  //   isDragging = false;
+  //   window.removeEventListener('touchmove', onTouchMove);
+  //   window.removeEventListener('touchend', onTouchEnd);
+  // };
   
-  const onTouchStart = (e) => {
-    isDragging = true;
-    startY = e.touches[0].clientY;
-    startHeight = busInfo.getBoundingClientRect().height;
-    window.addEventListener('touchmove', onTouchMove);
-    window.addEventListener('touchend', onTouchEnd);
-  };
+  // const onTouchStart = (e) => {
+  //   isDragging = true;
+  //   startY = e.touches[0].clientY;
+  //   startHeight = busInfo.getBoundingClientRect().height;
+  //   window.addEventListener('touchmove', onTouchMove);
+  //   window.addEventListener('touchend', onTouchEnd);
+  // };
   
-  handle.addEventListener('touchstart', onTouchStart);
+  // handle.addEventListener('touchstart', onTouchStart);
 
 
 
@@ -298,21 +298,23 @@ swuin.on('click', function() {
 }
 });
 
+// แบบกด
+document.querySelector('.handle').addEventListener('click', function() {
+  var textBox = document.querySelector('.text');
+  if (textBox.style.display === 'none' || textBox.style.display === '') {
+      textBox.style.display = 'flex';
+      // ใช้ timeout เพื่อให้ transition ทำงานหลังจากที่ display ถูกตั้งค่า
+      setTimeout(() => {
+          textBox.classList.toggle('expanded');
+      }, 10);
+  } else {
+      textBox.classList.toggle('expanded');
+      textBox.addEventListener('transitionend', function() {
+          if (!textBox.classList.contains('expanded')) {
+              // textBox.style.display = 'none';
+          }
+      }, { once: true });
+  }
+});
 
-// document.querySelector('.handle').addEventListener('click', function() {
-//   var textBox = document.querySelector('.text');
-//   if (textBox.style.display === 'none' || textBox.style.display === '') {
-//       textBox.style.display = 'flex';
-//       // ใช้ timeout เพื่อให้ transition ทำงานหลังจากที่ display ถูกตั้งค่า
-//       setTimeout(() => {
-//           textBox.classList.toggle('expanded');
-//       }, 10);
-//   } else {
-//       textBox.classList.toggle('expanded');
-//       textBox.addEventListener('transitionend', function() {
-//           if (!textBox.classList.contains('expanded')) {
-//               textBox.style.display = 'none';
-//           }
-//       }, { once: true });
-//   }
-// });
+
