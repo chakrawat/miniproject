@@ -2,14 +2,13 @@
  var map = L.map('map').setView([13.745735, 100.562580], 14) 
 
    
-  // basedmap2
+  // basedmap
       var OpenStreetMap_France = L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
      maxZoom: 20,
      attribution: '&copy; OpenStreetMap France | &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map);
 
- 
-
+//  ใส่ไอคอน ป้ายฝั่งมศว
       var iconswuin = L.icon({
         iconUrl: 'https://cdn-icons-png.flaticon.com/128/5193/5193846.png',
         iconSize: [45, 55], // ขนาดของไอคอน
@@ -17,6 +16,7 @@
         // popupAnchor: [-3, -76] // จุดที่ป๊อปอัพจะยึดในพิกเซล
     });
 
+// ปักจุดป้ายรถเมล์ฝั่งมศว
        var swuin= L.marker([13.744471, 100.562416],
             {
             draggable: false, // ขยับจุด
@@ -30,14 +30,14 @@
         // .openPopup();
         // swuin.addTo(map);
 
-      
+      //  ใส่ไอคอน ป้ายฝั่งตรงข้ามมศว  
         var iconswuout = L.icon({
           iconUrl: 'https://cdn-icons-png.flaticon.com/128/5193/5193846.png',
           iconSize: [45, 55], // ขนาดของไอคอน
           // iconAnchor: [22, 94], // จุดที่ไอคอนจะถูกยึดในพิกเซล
           // popupAnchor: [-3, -76] // จุดที่ป๊อปอัพจะยึดในพิกเซล
       });
-
+// ปักจุดป้ายรถเมล์ฝั่งตรงข้ามมศว
       var swuout= L.marker([13.745735, 100.562580],
         {
         draggable: false, // ขยับจุด
@@ -52,14 +52,15 @@
 
     // swuout.addTo(map);
 
+    // grouplayer 
     var busMarkers = L.layerGroup([swuin, swuout]);
     busMarkers.addTo(map); 
 
-   
-
+  // ใส่คำอธิบาย
       var baseLayers ={
         'OSM' : OpenStreetMap_France}
-
+        
+        // แสดงlayerบนmap
         L.control.layers(baseLayers, {
           'SWU Station': busMarkers// Add busMarkers as a selectable layer
       }).addTo(map);
@@ -68,7 +69,7 @@
 
     
 
-// onclick
+// onclick 
 
 var acc = document.getElementsByClassName("accordion");
 var i;
@@ -98,7 +99,7 @@ var i;
 
 // map on click
 
-// 53 go 
+// 53 go คลิกเ้พื่อเเสดงเส้นทางและรถ
 let mapInitializeds = false;
     function showMap() {
       
@@ -189,70 +190,68 @@ let mapInitializeds = false;
 
 
 
-    // แถบเลื่อน มือถือ
- 
+    // แถบเลื่อนในหน้าจอ มือถือ
 
-
-  // const busInfo = document.querySelector('.text');
-  // const handle = document.querySelector('.handle');
+  const busInfo = document.querySelector('.text');
+  const handle = document.querySelector('.handle');
   
-  // let isDragging = false;
-  // let startY, startHeight;
+  let isDragging = false;
+  let startY, startHeight;
   
-  // const onMouseMove = (e) => {
-  //   if (!isDragging) return;
-  //   const dy = e.clientY - startY;
-  //   const newHeight = startHeight - dy;
-  //   busInfo.style.height = `${newHeight}px`;
-  // };
+  const onMouseMove = (e) => {
+    if (!isDragging) return;
+    const dy = e.clientY - startY;
+    const newHeight = startHeight - dy;
+    busInfo.style.height = `${newHeight}px`;
+  };
   
-  // const onMouseUp = () => {
-  //   isDragging = false;
-  //   window.removeEventListener('mousemove', onMouseMove);
-  //   window.removeEventListener('mouseup', onMouseUp);
-  // };
+  const onMouseUp = () => {
+    isDragging = false;
+    window.removeEventListener('mousemove', onMouseMove);
+    window.removeEventListener('mouseup', onMouseUp);
+  };
   
-  // const onMouseDown = (e) => {
-  //   isDragging = true;
-  //   startY = e.clientY;
-  //   startHeight = busInfo.getBoundingClientRect().height;
-  //   window.addEventListener('mousemove', onMouseMove);
-  //   window.addEventListener('mouseup', onMouseUp);
-  // };
+  const onMouseDown = (e) => {
+    isDragging = true;
+    startY = e.clientY;
+    startHeight = busInfo.getBoundingClientRect().height;
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mouseup', onMouseUp);
+  };
   
-  // handle.addEventListener('mousedown', onMouseDown);
+  handle.addEventListener('mousedown', onMouseDown);
 
   
   
-  // // For touch devices
-  // const onTouchMove = (e) => {
-  //   if (!isDragging) return;
-  //   const dy = e.touches[0].clientY - startY;
-  //   const newHeight = startHeight - dy;
-  //   busInfo.style.height = `${newHeight}px`;
-  // };
+  // For touch devices
+  const onTouchMove = (e) => {
+    if (!isDragging) return;
+    const dy = e.touches[0].clientY - startY;
+    const newHeight = startHeight - dy;
+    busInfo.style.height = `${newHeight}px`;
+  };
   
-  // const onTouchEnd = () => {
-  //   isDragging = false;
-  //   window.removeEventListener('touchmove', onTouchMove);
-  //   window.removeEventListener('touchend', onTouchEnd);
-  // };
+  const onTouchEnd = () => {
+    isDragging = false;
+    window.removeEventListener('touchmove', onTouchMove);
+    window.removeEventListener('touchend', onTouchEnd);
+  };
   
-  // const onTouchStart = (e) => {
-  //   isDragging = true;
-  //   startY = e.touches[0].clientY;
-  //   startHeight = busInfo.getBoundingClientRect().height;
-  //   window.addEventListener('touchmove', onTouchMove);
-  //   window.addEventListener('touchend', onTouchEnd);
-  // };
+  const onTouchStart = (e) => {
+    isDragging = true;
+    startY = e.touches[0].clientY;
+    startHeight = busInfo.getBoundingClientRect().height;
+    window.addEventListener('touchmove', onTouchMove);
+    window.addEventListener('touchend', onTouchEnd);
+  };
   
-  // handle.addEventListener('touchstart', onTouchStart);
-
+  handle.addEventListener('touchstart', onTouchStart);
 
 
 
 
 
+// กดที่จุดป้ายรถเมล์มศวเพื่อเเสดงกล่องขึ้นมา เฉพาะในหน้าจอมือถือ
 
 swuout.on('click', function() {
   if (window.matchMedia("(max-width:481px )").matches){
@@ -298,23 +297,24 @@ swuin.on('click', function() {
 }
 });
 
-// แบบกด
-document.querySelector('.handle').addEventListener('click', function() {
-  var textBox = document.querySelector('.text');
-  if (textBox.style.display === 'none' || textBox.style.display === '') {
-      textBox.style.display = 'flex';
-      // ใช้ timeout เพื่อให้ transition ทำงานหลังจากที่ display ถูกตั้งค่า
-      setTimeout(() => {
-          textBox.classList.toggle('expanded');
-      }, 10);
-  } else {
-      textBox.classList.toggle('expanded');
-      textBox.addEventListener('transitionend', function() {
-          if (!textBox.classList.contains('expanded')) {
-              // textBox.style.display = 'none';
-          }
-      }, { once: true });
-  }
-});
+// แบบกดเพื่อเเสดงกล่องในหน้าจอมือถือ
+
+// document.querySelector('.handle').addEventListener('click', function() {
+//   var textBox = document.querySelector('.text');
+//   if (textBox.style.display === 'none' || textBox.style.display === '') {
+//       textBox.style.display = 'flex';
+//       // ใช้ timeout เพื่อให้ transition ทำงานหลังจากที่ display ถูกตั้งค่า
+//       setTimeout(() => {
+//           textBox.classList.toggle('expanded');
+//       }, 10);
+//   } else {
+//       textBox.classList.toggle('expanded');
+//       textBox.addEventListener('transitionend', function() {
+//           if (!textBox.classList.contains('expanded')) {
+//               // textBox.style.display = 'none';
+//           }
+//       }, { once: true });
+//   }
+// });
 
 

@@ -53,7 +53,7 @@ body{
 
 
 
-
+/* เซตขนาดเเละองค์ประกอบกล่องต่าง ๆ */
 
 .box {
   display: flex;
@@ -67,6 +67,7 @@ body{
    
 }
 
+/*ขนาดพื้นของmap */
 .m {
 
     justify-content: flex-end;
@@ -82,7 +83,7 @@ body{
 
 }
 
-
+/* กล่องข้อความด้านซ้าย */
 .left{
     background-color: rgb(255, 255, 255);
     width:600px;
@@ -93,7 +94,7 @@ body{
     height: 100%;
    
 
-  
+  /* ตัวอักษรSWU */
     
 }
 .SWU {
@@ -102,21 +103,21 @@ body{
     color: darkred;
     text-align: center;
     
-    
+    /*ตัวอักษร station  */
 }
 .station{
     font-size: 30px;
     text-align: center;
     color: gray;
     
-    
+    /*เส้นขั้น  */
 }
 .line{
     width: 250px;
     height: 1px;
     background-color: grey;
     
-    
+
 }
 .btn a {
     justify-content: left;
@@ -144,7 +145,7 @@ body{
     
 
  
-    
+    /* ปรับเเต่งส่วนเนื่อหาฝั่งป้ายตรงข้ามมศว */
 }
 
 .boxone{
@@ -160,7 +161,7 @@ body{
     
 }
 
-
+/* ส่วนของเเทบปุ่มกด */
 .accordion{
     background-color: #eee;
     color: #444;
@@ -193,6 +194,7 @@ body{
     content: "\2212";
   }
   
+  /* ตัวเลื่อนเมื่อกด */
   .panel {
     padding: 0 px;
     background-color: white;
@@ -215,7 +217,7 @@ body{
     
     
 }
-
+/* ปรับเเต่งส่วนเนื่อหาฝั่งป้ายมศว */
 .boxtwo{
     padding-left: 5%;
     height: 100%;
@@ -228,12 +230,12 @@ body{
     
     
 }
-
+/* ป้ายฝั่งมศว */
 .here{
     font-size: 20px;
     text-align: center;
 }
-
+/* ป้ายฝั่งตรงข้าม */
 .there{
     text-align: center;
     font-size: 20px;
@@ -248,16 +250,17 @@ body{
 }
 
 
-
+/* idปุ่ม ฝั่งตรงข้ามมศว */
 #f{
     width: 255px;
     height: 40%;
     
 }
-
+/* ตัวกล่องของข้อความ SWU Station */
 .ad{
     justify-content: flex-start;
 }
+
 .leaflet-routing-container {
     display: none !important;
 }
@@ -347,7 +350,7 @@ s
         color: white;
         box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
         overflow-y: auto;
-        transition: height 0.3s ,transform 0.3s ease;;
+        transition: height 0.1s ,transform 0.1s ease;;
         border-radius: 15px 15px 0 0;
         max-height: 80%;
         min-height: 20%;
