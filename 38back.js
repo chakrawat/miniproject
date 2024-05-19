@@ -9,8 +9,8 @@ function showMapttpss() {
     var mapElementp = document.getElementById("map");
         mapElementp.style.display = "block";
         var taxiIcon = L.icon({
-            iconUrl: 'bus/image/3-8-Photoroom.png-Photoroom.png',
-            iconSize: [130, 100]
+            iconUrl: 'https://img5.pic.in.th/file/secure-sv1/3-8-Photoroom.png-Photoroom.png',
+            iconSize: [150, 100]
         })
         // จุดเริ่มขึ้นรถเมล์ ฝั่งมศว
         // var marker = L.marker([13.744471, 100.562416], { icon: taxiIcon }).addTo(map);
@@ -58,8 +58,11 @@ function showMapttpss() {
                         'ตรงข้ามบางแก้ว,25บาท',
                         'อู่ไทยสมายล์บัส รามคำแหง 2,25บาท'
                     ];
+
+                
+            // เพิ่ม routing control ลงในแผนที่
             
-                    var iconUrl = 'bus/bus (4).png'; // เปลี่ยนเป็น URL ของรูปภาพ Marker ที่ต้องการใช้
+                    var iconUrl = 'https://img2.pic.in.th/pic/busYellow.png'; // เปลี่ยนเป็น URL ของรูปภาพ Marker ที่ต้องการใช้
                     var icon = L.icon({
                         iconUrl: iconUrl,
                         iconSize: [45, 55] // ขนาดของ Marker
@@ -72,15 +75,7 @@ function showMapttpss() {
             
                     marker.bindPopup(markerNames[i]); // เพิ่ม popup ที่มีชื่อของ marker
                     return marker;
-                // createMarker: function(i, waypoint, n) {
-				// 	// กำหนดรูป Marker แต่ละตำแหน่ง
-				// 	var iconUrl = 'bus/bus (4).png'; // เปลี่ยนเป็น URL ของรูปภาพ Marker ที่ต้องการใช้
-				// 	var icon = L.icon({
-				// 	  iconUrl: iconUrl,
-				// 	  iconSize: [45, 55], // ขนาดของ Marker
-				// 	  // iconAnchor: [16, 32], // จุดศูนย์กลางของ Marker ที่ติดตั้งบนแผนที่
-				// 	  // popupAnchor: [0, -32] // จุดที่ Popup จะแสดงขึ้นเมื่อคลิกที่ Marker
-				// 	});
+          
 		
 				  
 		

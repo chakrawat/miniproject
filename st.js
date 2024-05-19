@@ -1,5 +1,5 @@
  // create map
- var map = L.map('map').setView([13.745735, 100.562580], 16) 
+ var map = L.map('map').setView([13.745735, 100.562580], 14) 
 
    
   // basedmap2
@@ -25,11 +25,12 @@
             icon:iconswuin,
             zIndexOffset: 1000 
             }
-        ).bindPopup("<b>จุดเริ่มขึ้นรถเมล์ ฝั่งมศว</b><br>เมื่อเดินออกจากมหาวิทยาลัย <br>ป้ายจะอยู่ฝั่งซ้ายมือ <br>เดินถัดไปจากตลาดสุขตา<br><img src='bus/image/สกรีนช็อต 2024-05-18 222922.png' alt='Scenic view' class='popup-image'>")
-        .openPopup();
-        swuin.addTo(map);
+        )
+        // .bindPopup("<b>จุดเริ่มขึ้นรถเมล์ ฝั่งมศว</b><br>เมื่อเดินออกจากมหาวิทยาลัย <br>ป้ายจะอยู่ฝั่งซ้ายมือ <br>เดินถัดไปจากตลาดสุขตา<br><img src='bus/image/สกรีนช็อต 2024-05-18 222922.png' alt='Scenic view' class='popup-image'>")
+        // .openPopup();
+        // swuin.addTo(map);
 
-
+      
         var iconswuout = L.icon({
           iconUrl: 'https://cdn-icons-png.flaticon.com/128/5193/5193846.png',
           iconSize: [45, 55], // ขนาดของไอคอน
@@ -45,10 +46,11 @@
         icon:iconswuout,
         zIndexOffset: 1000
         }
-    ).bindPopup("<b>จุดเริ่มขึ้นรถเมล์ ฝั่งตรงข่ามมศว</b><br>เมื่อเดินออกจากมหาวิทยาลัย <br>ป้ายจะอยู่ฝั่งขวามือ <br>เดินข้ามทางม้าลายเผื่อไปฝั่งตรงข้าม<br><img src='bus/image/สกรีนช็อต 2024-05-18 223212.png' alt='Scenic view' class='popup-image'>")
-    .openPopup();
+    )
+    // .bindPopup("<b>จุดเริ่มขึ้นรถเมล์ ฝั่งตรงข่ามมศว</b><br>เมื่อเดินออกจากมหาวิทยาลัย <br>ป้ายจะอยู่ฝั่งขวามือ <br>เดินข้ามทางม้าลายเผื่อไปฝั่งตรงข้าม<br><img src='https://img5.pic.in.th/file/secure-sv1/-2024-05-18-2232128add8c37bce2cce4.png' alt='Scenic view' class='popup-image'>")
+    // .openPopup();
 
-    swuout.addTo(map);
+    // swuout.addTo(map);
 
     var busMarkers = L.layerGroup([swuin, swuout]);
     busMarkers.addTo(map); 
@@ -95,7 +97,7 @@ var i;
 }
 
 // map on click
-	
+
 // 53 go 
 let mapInitializeds = false;
     function showMap() {
@@ -111,8 +113,9 @@ let mapInitializeds = false;
     
 
       var taxiIcon = L.icon({
-        iconUrl: 'bus/image/3-53-Photoroom.png-Photoroom.png',
-        iconSize: [130, 100]
+        // iconUrl: 'bus/image/3-53-Photoroom.png-Photoroom.png',
+        iconUrl: 'https://img5.pic.in.th/file/secure-sv1/3-53-Photoroom.png-Photoroom.png',
+        iconSize: [150, 100]
       })
           // จุดเริ่มขึ้นรถเมล์ ฝั่งตรงข้ามมศว
       var marker = L.marker([13.745735, 100.562580
@@ -147,7 +150,7 @@ let mapInitializeds = false;
           ],
           createMarker: function(i, waypoint, n) {
             // กำหนดรูป Marker แต่ละตำแหน่ง
-            var iconUrl = 'bus/bus.png'; // เปลี่ยนเป็น URL ของรูปภาพ Marker ที่ต้องการใช้
+            var iconUrl = 'https://img2.pic.in.th/pic/busGreen53cc095fac16e113.png'; // เปลี่ยนเป็น URL ของรูปภาพ Marker ที่ต้องการใช้
             var icon = L.icon({
               iconUrl: iconUrl,
               iconSize: [45, 55], // ขนาดของ Marker
@@ -246,13 +249,7 @@ let mapInitializeds = false;
   handle.addEventListener('touchstart', onTouchStart);
 
 
-// คลิกmarker oppup
-//   swuin.on('click', function() {
-//     var textBox = document.querySelector('.text');
-//     if (textBox) {
-//         textBox.style.display = 'block'; // แสดงกล่องข้อความ
-//     }
-// });
+
 
 
 
@@ -302,3 +299,20 @@ swuin.on('click', function() {
 });
 
 
+// document.querySelector('.handle').addEventListener('click', function() {
+//   var textBox = document.querySelector('.text');
+//   if (textBox.style.display === 'none' || textBox.style.display === '') {
+//       textBox.style.display = 'flex';
+//       // ใช้ timeout เพื่อให้ transition ทำงานหลังจากที่ display ถูกตั้งค่า
+//       setTimeout(() => {
+//           textBox.classList.toggle('expanded');
+//       }, 10);
+//   } else {
+//       textBox.classList.toggle('expanded');
+//       textBox.addEventListener('transitionend', function() {
+//           if (!textBox.classList.contains('expanded')) {
+//               textBox.style.display = 'none';
+//           }
+//       }, { once: true });
+//   }
+// });

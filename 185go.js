@@ -13,8 +13,8 @@ function showMapttt() {
 
     var taxiIcon = L.icon({
         // iconUrl: '185-Photoroom.png-Photoroom.png',
-        iconUrl: 'bus/image/185-Photoroom.png-Photoroom.png',
-        iconSize: [130, 100]
+        iconUrl: 'https://img2.pic.in.th/pic/185-Photoroom.png-Photoroom.png',
+        iconSize: [150, 100]
     })
     // จุดเริ่มขึ้นรถเมล์ ฝั่งตรงข้ามมศว
     var marker = L.marker([13.745735, 100.562580
@@ -58,7 +58,7 @@ function showMapttt() {
                 ];
             // createMarker: function(i, waypoint, n) {
                 // กำหนดรูป Marker แต่ละตำแหน่ง
-                var iconUrl = 'bus/bus (1).png'; // เปลี่ยนเป็น URL ของรูปภาพ Marker ที่ต้องการใช้
+                var iconUrl = 'https://img2.pic.in.th/pic/busred.png'; // เปลี่ยนเป็น URL ของรูปภาพ Marker ที่ต้องการใช้
                 var icon = L.icon({
                     iconUrl: iconUrl,
                     iconSize: [45, 55], // ขนาดของ Marker
